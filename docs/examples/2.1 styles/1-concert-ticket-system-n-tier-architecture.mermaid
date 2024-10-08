@@ -1,0 +1,46 @@
+graph TD
+    subgraph "Presentation Layer"
+        A1[Web Interface]
+        A2[Mobile App]
+        A3[Kiosk Interface]
+    end
+
+    subgraph "Application Layer"
+        B1[Web Server]
+        B2[Application Server]
+        B3[Authentication Service]
+    end
+
+    subgraph "Business Logic Layer"
+        C1[Ticket Management]
+        C2[Inventory Management]
+        C3[Payment Processing]
+        C4[Event Management]
+    end
+
+    subgraph "Data Access Layer"
+        D1[Data Access Components]
+    end
+
+    subgraph "Database Layer"
+        E1[(User Database)]
+        E2[(Ticket Database)]
+        E3[(Event Database)]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    B1 --> B2
+    B2 --> B3
+    B2 --> C1
+    B2 --> C2
+    B2 --> C3
+    B2 --> C4
+    C1 --> D1
+    C2 --> D1
+    C3 --> D1
+    C4 --> D1
+    D1 --> E1
+    D1 --> E2
+    D1 --> E3

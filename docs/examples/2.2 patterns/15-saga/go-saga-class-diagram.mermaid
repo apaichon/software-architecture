@@ -1,0 +1,33 @@
+classDiagram
+    class Ticket {
+        +ID string
+        +Status string
+    }
+
+    class TicketService {
+        -tickets map[string]*Ticket
+        +ReserveTicket(id string) error
+        +CancelReservation(id string) error
+    }
+
+    class PaymentService {
+        +ProcessPayment(amount float64) error
+        +RefundPayment(amount float64) error
+    }
+
+    class NotificationService {
+        +SendConfirmation(email string) error
+        +SendCancellation(email string) error
+    }
+
+    class Saga {
+        -ticketService *TicketService
+        -paymentService *PaymentService
+        -notificationService *NotificationService
+        +BookTicket(ticketID string, amount float64, email string) error
+    }
+
+    Saga --> TicketService : uses
+    Saga --> PaymentService : uses
+    Saga --> NotificationService : uses
+    TicketService --> "0..*" Ticket : manages

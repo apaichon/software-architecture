@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700">
+  <style>
+    .title { font: bold 24px sans-serif; }
+    .subtitle { font: bold 18px sans-serif; }
+    .text { font: 14px sans-serif; }
+    .code { font: 12px monospace; fill: #333; }
+    .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+    .highlight { fill: #e6f3ff; }
+    .violation { fill: #ffe6e6; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Dependency Inversion Principle (DIP)</text>
+  
+  <!-- Definition -->
+  <rect x="50" y="50" width="700" height="60" class="box"/>
+  <text x="400" y="75" text-anchor="middle" class="text">
+    "High-level modules should not depend on low-level modules. Both should depend on abstractions."
+  </text>
+  <text x="400" y="95" text-anchor="middle" class="text">
+    "Abstractions should not depend on details. Details should depend on abstractions."
+  </text>
+  
+  <!-- Key Concepts -->
+  <text x="50" y="140" class="subtitle">Key Concepts:</text>
+  
+  <rect x="50" y="150" width="700" height="100" class="box highlight"/>
+  <text x="60" y="170" class="text">• Depend on abstractions (interfaces or abstract classes) instead of concrete classes</text>
+  <text x="60" y="190" class="text">• Invert the dependency direction: low-level modules implement interfaces defined by high-level modules</text>
+  <text x="60" y="210" class="text">• Use Dependency Injection to provide implementations at runtime</text>
+  <text x="60" y="230" class="text">• Promotes loose coupling and flexibility in system design</text>
+  
+  <!-- Example -->
+  <text x="50" y="280" class="subtitle">Example: Concert Ticket System</text>
+  
+  <!-- Violating DIP -->
+  <rect x="50" y="300" width="300" height="210" class="box violation"/>
+  <text x="200" y="320" text-anchor="middle" class="subtitle">Violating DIP</text>
+  <text x="60" y="340" class="code">class TicketService {</text>
+  <text x="70" y="360" class="code">  private EmailSender emailSender;</text>
+  <text x="70" y="380" class="code">  private DatabaseLogger logger;</text>
+  <text x="70" y="400" class="code">  </text>
+  <text x="70" y="420" class="code">  public TicketService() {</text>
+  <text x="80" y="440" class="code">    emailSender = new EmailSender();</text>
+  <text x="80" y="460" class="code">    logger = new DatabaseLogger();</text>
+  <text x="70" y="480" class="code">  }</text>
+  <text x="60" y="500" class="code">}</text>
+  
+  <!-- Following DIP -->
+  <rect x="450" y="330" width="330" height="250" class="box highlight"/>
+  <text x="600" y="320" text-anchor="middle" class="subtitle">Following DIP</text>
+  <text x="460" y="350" class="code">interface INotificationService {</text>
+  <text x="470" y="370" class="code">  void SendNotification(string message);</text>
+  <text x="460" y="390" class="code">}</text>
+  <text x="460" y="410" class="code">interface ILogger {</text>
+  <text x="470" y="430" class="code">  void Log(string message);</text>
+  <text x="460" y="450" class="code">}</text>
+  <text x="460" y="470" class="code">class TicketService {</text>
+  <text x="470" y="490" class="code">  private INotificationService notifier;</text>
+  <text x="470" y="510" class="code">  private ILogger logger;</text>
+  <text x="470" y="530" class="code">  public TicketService(INotificationService</text>
+  <text x="470" y="550" class="code">    notifier, ILogger logger) { ... }</text>
+  <text x="460" y="570" class="code">}</text>
+  
+  <!-- Arrow -->
+  <path d="M350 400 L450 400" class="arrow"/>
+  
+  <!-- Benefits -->
+  <text x="50" y="580" class="subtitle">Benefits of DIP:</text>
+  <text x="60" y="610" class="text">• Reduced coupling between modules</text>
+  <text x="60" y="630" class="text">• Improved flexibility and easier substitution of components</text>
+  <text x="450" y="610" class="text">• Enhanced testability through easier mocking</text>
+  <text x="450" y="630" class="text">• Facilitates modular and scalable architecture</text>
+  
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+</svg>

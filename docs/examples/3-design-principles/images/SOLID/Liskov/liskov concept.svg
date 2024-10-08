@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <style>
+    .title { font: bold 24px sans-serif; }
+    .subtitle { font: bold 18px sans-serif; }
+    .text { font: 14px sans-serif; }
+    .code { font: 12px monospace; fill: #333; }
+    .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; }
+    .highlight { fill: #e6f3ff; }
+    .violation { fill: #ffe6e6; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Liskov Substitution Principle (LSP)</text>
+  
+  <!-- Definition -->
+  <rect x="50" y="50" width="850" height="60" class="box"/>
+  <text x="450" y="80" text-anchor="middle" class="text">
+    "Objects of a superclass shall be replaceable with objects of its subclasses without affecting the correctness of the program."
+  </text>
+  <text x="400" y="100" text-anchor="middle" class="text">
+    - Barbara Liskov
+  </text>
+  
+  <!-- Key Concepts -->
+  <text x="50" y="150" class="subtitle">Key Concepts:</text>
+  
+  <!-- Subtype Behavior -->
+  <rect x="50" y="170" width="400" height="120" class="box highlight"/>
+  <text x="60" y="190" class="text">1. Subtype Behavior</text>
+  <text x="70" y="210" class="text">• Subclasses should extend, not replace, base class behavior</text>
+  <text x="70" y="230" class="text">• Methods in derived class should accept same inputs</text>
+  <text x="70" y="250" class="text">• Return types should be same or more specific</text>
+  <text x="70" y="270" class="text">• Exceptions should not be broader</text>
+  
+  <!-- Preconditions and Postconditions -->
+  <rect x="460" y="170" width="400" height="120" class="box highlight"/>
+  <text x="480" y="190" class="text">2. Preconditions and Postconditions</text>
+  <text x="490" y="210" class="text">• Preconditions cannot be strengthened in subtype</text>
+  <text x="490" y="230" class="text">• Postconditions cannot be weakened in subtype</text>
+  <text x="490" y="250" class="text">• Invariants of the supertype must be preserved</text>
+  <text x="490" y="270" class="text">• History constraint (no new methods altering base state)</text>
+  
+  <!-- Example -->
+  <text x="50" y="320" class="subtitle">Example:</text>
+  
+  <!-- Base Class -->
+  <rect x="50" y="340" width="220" height="80" class="box"/>
+  <text x="160" y="360" text-anchor="middle" class="text">Rectangle</text>
+  <line x1="50" y1="370" x2="270" y2="370" stroke="#333"/>
+  <text x="60" y="390" class="code">+ SetWidth(width: int)</text>
+  <text x="60" y="410" class="code">+ SetHeight(height: int)</text>
+  
+  <!-- Subclass (Correct) -->
+  <rect x="50" y="460" width="220" height="80" class="box highlight"/>
+  <text x="160" y="480" text-anchor="middle" class="text">Square (Correct)</text>
+  <line x1="50" y1="490" x2="270" y2="490" stroke="#333"/>
+  <text x="60" y="510" class="code">+ SetWidth(width: int)</text>
+  <text x="60" y="530" class="code">+ SetHeight(height: int)</text>
+  
+  <!-- Subclass (Violation) -->
+  <rect x="290" y="460" width="220" height="80" class="box violation"/>
+  <text x="400" y="480" text-anchor="middle" class="text">Square (LSP Violation)</text>
+  <line x1="290" y1="490" x2="510" y2="490" stroke="#333"/>
+  <text x="300" y="510" class="code">+ SetSize(size: int)</text>
+  
+  <!-- Arrows -->
+  <path d="M160 420 L160 460" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M160 420 L400 460" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+  
+  <!-- Explanation -->
+  <text x="540" y="360" class="text">Correct: Square maintains Rectangle's</text>
+  <text x="540" y="380" class="text">interface, preserving LSP.</text>
+  <text x="540" y="420" class="text">Violation: Square changes interface,</text>
+  <text x="540" y="440" class="text">breaking client expectations and LSP.</text>
+  
+  <!-- Benefits -->
+  <text x="50" y="570" class="subtitle">Benefits of LSP:</text>
+  <text x="60" y="590" class="text">• Improved code reusability and flexibility</text>
+  <text x="320" y="590" class="text">• Enhanced system robustness</text>
+  <text x="540" y="590" class="text">• Easier maintenance and extensions</text>
+</svg>

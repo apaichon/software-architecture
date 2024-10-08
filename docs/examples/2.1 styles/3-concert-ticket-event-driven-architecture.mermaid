@@ -1,0 +1,61 @@
+graph TD
+    subgraph "Client Layer"
+        A1[Web Client]
+        A2[Mobile Client]
+        A3[Kiosk Client]
+    end
+
+    subgraph "API Gateway"
+        B[API Gateway]
+    end
+
+    subgraph "Event Bus"
+        C[Event Bus / Message Broker]
+    end
+
+    subgraph "Services"
+        D1[User Service]
+        D2[Event Service]
+        D3[Ticket Service]
+        D4[Payment Service]
+        D5[Notification Service]
+        D6[Analytics Service]
+    end
+
+    subgraph "Databases"
+        E1[(User DB)]
+        E2[(Event DB)]
+        E3[(Ticket DB)]
+        E4[(Payment DB)]
+    end
+
+    subgraph "External Services"
+        F1[Email Service]
+        F2[SMS Service]
+        F3[Payment Gateway]
+    end
+
+    A1 --> B
+    A2 --> B
+    A3 --> B
+    B <--> C
+    C <--> D1
+    C <--> D2
+    C <--> D3
+    C <--> D4
+    C <--> D5
+    C <--> D6
+    D1 <--> E1
+    D2 <--> E2
+    D3 <--> E3
+    D4 <--> E4
+    D5 --> F1
+    D5 --> F2
+    D4 --> F3
+
+    %% Event flow examples
+    C -->|UserRegistered| D5
+    C -->|TicketPurchased| D4
+    C -->|PaymentProcessed| D3
+    C -->|EventCreated| D2
+    C -->|TicketSold| D6

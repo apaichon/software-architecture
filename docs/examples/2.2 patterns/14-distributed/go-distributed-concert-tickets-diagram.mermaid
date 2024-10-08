@@ -1,0 +1,36 @@
+graph TD
+    A[Clients] -->|HTTP Requests| B[HTTP Server :8080]
+    B -->|Distribute Requests| C{Load Balancer}
+    
+    C -->|Round Robin| D[Booking Server 1 :8081]
+    C -->|Round Robin| E[Booking Server 2 :8082]
+    C -->|Round Robin| F[Booking Server 3 :8083]
+    
+    D -->|RPC| G[(Shared TicketStore)]
+    E -->|RPC| G
+    F -->|RPC| G
+    
+    H[Load Tester] -.->|Simulated Requests| B
+    
+    subgraph "Booking Servers"
+        D
+        E
+        F
+    end
+    
+    subgraph "Shared Resource"
+        G
+    end
+    
+    classDef client fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef server fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef loadbalancer fill:#bfb,stroke:#333,stroke-width:2px;
+    classDef bookingserver fill:#fbb,stroke:#333,stroke-width:2px;
+    classDef sharedresource fill:#ffe,stroke:#333,stroke-width:2px;
+    classDef loadtester fill:#ddf,stroke:#333,stroke-width:2px;
+    
+    class A client;
+    class B,D,E,F server;
+    class C loadbalancer;
+    class G sharedresource;
+    class H loadtester;

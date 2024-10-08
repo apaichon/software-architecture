@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <style>
+    .class-box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+    .class-name { font: bold 14px sans-serif; }
+    .class-content { font: 12px sans-serif; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; }
+    .note { font: italic 12px sans-serif; fill: #666; }
+  </style>
+  
+  <!-- ConcertTicket -->
+  <rect x="300" y="50" width="200" height="100" class="class-box"/>
+  <text x="400" y="70" text-anchor="middle" class="class-name">ConcertTicket</text>
+  <line x1="300" y1="80" x2="500" y2="80" stroke="#333"/>
+  <text x="310" y="100" class="class-content">+ GetTicketInfo(): string</text>
+  <text x="310" y="120" class="class-content">+ CalculatePrice(): decimal</text>
+  <text x="310" y="140" class="class-content">+ PrintTicket(): void</text>
+  
+  <!-- VIPTicket -->
+  <rect x="50" y="250" width="200" height="80" class="class-box"/>
+  <text x="150" y="270" text-anchor="middle" class="class-name">VIPTicket</text>
+  <line x1="50" y1="280" x2="250" y2="280" stroke="#333"/>
+  <text x="60" y="300" class="class-content">+ GetTicketInfo(): string</text>
+  <text x="60" y="320" class="class-content">+ CalculatePrice(): decimal</text>
+  
+  <!-- EarlyBirdTicket -->
+  <rect x="300" y="250" width="200" height="80" class="class-box"/>
+  <text x="400" y="270" text-anchor="middle" class="class-name">EarlyBirdTicket</text>
+  <line x1="300" y1="280" x2="500" y2="280" stroke="#333"/>
+  <text x="310" y="300" class="class-content">+ GetTicketInfo(): string</text>
+  <text x="310" y="320" class="class-content">+ CalculatePrice(): decimal</text>
+  
+  <!-- FreePassTicket -->
+  <rect x="550" y="250" width="200" height="100" class="class-box"/>
+  <text x="650" y="270" text-anchor="middle" class="class-name">FreePassTicket</text>
+  <line x1="550" y1="280" x2="750" y2="280" stroke="#333"/>
+  <text x="560" y="300" class="class-content">+ GetTicketInfo(): string</text>
+  <text x="560" y="320" class="class-content">+ CalculatePrice(): decimal</text>
+  <text x="560" y="340" class="class-content">+ PrintTicket(): void</text>
+  
+  <!-- TicketManager -->
+  <rect x="300" y="400" width="200" height="60" class="class-box"/>
+  <text x="400" y="420" text-anchor="middle" class="class-name">TicketManager</text>
+  <line x1="300" y1="430" x2="500" y2="430" stroke="#333"/>
+  <text x="310" y="450" class="class-content">+ ProcessTickets(List&lt;ConcertTicket&gt;)</text>
+  
+  <!-- Inheritance Arrows -->
+  <path d="M150 250 L300 150" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M400 250 L400 150" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M650 250 L500 150" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- Usage Arrow -->
+  <path d="M400 400 L400 160" class="arrow" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+  
+  <!-- Notes -->
+  <text x="60" y="370" class="note">Adheres to LSP</text>
+  <text x="310" y="370" class="note">Adheres to LSP</text>
+  <text x="560" y="370" class="note">Violates LSP</text>
+  
+</svg>

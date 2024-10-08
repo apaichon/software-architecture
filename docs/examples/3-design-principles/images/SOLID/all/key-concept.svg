@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
+  <style>
+    .title { font: bold 24px sans-serif; }
+    .subtitle { font: bold 18px sans-serif; }
+    .text { font: 14px sans-serif; }
+    .code { font: 12px monospace; fill: #333; }
+    .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+    .highlight { fill: #e6f3ff; }
+    .violation { fill: #ffe6e6; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">DRY (Don't Repeat Yourself) Principle</text>
+  
+  <!-- Concept -->
+  <text x="50" y="70" class="subtitle">Concept:</text>
+  <rect x="50" y="80" width="700" height="80" class="box highlight"/>
+  <text x="60" y="100" class="text">"Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."</text>
+  <text x="60" y="130" class="text">• Avoid duplicating code, data, or business logic</text>
+  <text x="60" y="150" class="text">• Centralize common functionality in a single place</text>
+  
+  <!-- Benefits -->
+  <text x="50" y="190" class="subtitle">Benefits:</text>
+  <rect x="50" y="200" width="700" height="100" class="box highlight"/>
+  <text x="60" y="220" class="text">• Improved maintainability: Changes only need to be made in one place</text>
+  <text x="60" y="240" class="text">• Reduced risk of inconsistencies</text>
+  <text x="60" y="260" class="text">• Easier to update and extend code</text>
+  <text x="60" y="280" class="text">• Promotes code reuse and modularity</text>
+  
+  <!-- Example -->
+  <text x="50" y="330" class="subtitle">C# Example: Concert Ticket System</text>
+  
+  <!-- Violating DRY -->
+  <rect x="50" y="350" width="340" height="320" class="box violation"/>
+  <text x="220" y="370" text-anchor="middle" class="subtitle">Violating DRY</text>
+  <text x="60" y="390" class="code">public class RegularTicket {</text>
+  <text x="70" y="410" class="code">  public decimal CalculatePrice() {</text>
+  <text x="80" y="430" class="code">    decimal basePrice = 100;</text>
+  <text x="80" y="450" class="code">    decimal tax = basePrice * 0.1m;</text>
+  <text x="80" y="470" class="code">    return basePrice + tax;</text>
+  <text x="70" y="490" class="code">  }</text>
+  <text x="60" y="510" class="code">}</text>
+  <text x="60" y="530" class="code">public class VIPTicket {</text>
+  <text x="70" y="550" class="code">  public decimal CalculatePrice() {</text>
+  <text x="80" y="570" class="code">    decimal basePrice = 200;</text>
+  <text x="80" y="590" class="code">    decimal tax = basePrice * 0.1m;</text>
+  <text x="80" y="610" class="code">    return basePrice + tax;</text>
+  <text x="70" y="630" class="code">  }</text>
+  <text x="60" y="650" class="code">}</text>
+  
+  <!-- Following DRY -->
+  <rect x="410" y="350" width="350" height="290" class="box highlight"/>
+  <text x="580" y="370" text-anchor="middle" class="subtitle">Following DRY</text>
+  <text x="420" y="390" class="code">public abstract class Ticket {</text>
+  <text x="430" y="410" class="code">  protected abstract decimal BasePrice { get; }</text>
+  <text x="430" y="430" class="code">  private const decimal TaxRate = 0.1m;</text>
+  <text x="430" y="450" class="code">  public decimal CalculatePrice() {</text>
+  <text x="440" y="470" class="code">    return BasePrice + (BasePrice * TaxRate);</text>
+  <text x="430" y="490" class="code">  }</text>
+  <text x="420" y="510" class="code">}</text>
+  <text x="420" y="530" class="code">public class RegularTicket : Ticket {</text>
+  <text x="430" y="550" class="code">  protected override decimal BasePrice => 100;</text>
+  <text x="420" y="570" class="code">}</text>
+  <text x="420" y="590" class="code">public class VIPTicket : Ticket {</text>
+  <text x="430" y="610" class="code">  protected override decimal BasePrice => 200;</text>
+  <text x="420" y="630" class="code">}</text>
+  
+  <!-- Arrow -->
+  <path d="M390 470 L410 470" class="arrow"/>
+  
+  <!-- Key Points -->
+  <text x="50" y="710" class="subtitle">Key Points:</text>
+  <text x="60" y="730" class="text">• Common price calculation logic is centralized in the base Ticket class</text>
+  <text x="60" y="750" class="text">• Tax rate is defined once, reducing the risk of inconsistencies</text>
+  <text x="60" y="770" class="text">• Adding new ticket types doesn't require duplicating the calculation logic</text>
+  <text x="60" y="790" class="text">• Changes to the price calculation only need to be made in one place</text>
+  
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+</svg>

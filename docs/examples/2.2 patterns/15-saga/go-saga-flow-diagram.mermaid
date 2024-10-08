@@ -1,0 +1,27 @@
+graph TD
+    A[Start: Book Ticket] --> B{Reserve Ticket}
+    B -->|Success| C{Process Payment}
+    B -->|Failure| Z[End: Booking Failed]
+    
+    C -->|Success| D{Send Confirmation}
+    C -->|Failure| E[Cancel Ticket Reservation]
+    
+    D -->|Success| F[End: Booking Successful]
+    D -->|Failure| G[Refund Payment]
+    
+    E --> Z
+    G --> H[Cancel Ticket Reservation]
+    H --> Z
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#fbb,stroke:#333,stroke-width:2px
+    style F fill:#bfb,stroke:#333,stroke-width:2px
+    style G fill:#fbb,stroke:#333,stroke-width:2px
+    style H fill:#fbb,stroke:#333,stroke-width:2px
+    style Z fill:#ffb,stroke:#333,stroke-width:2px
+    
+    classDef compensationStep fill:#fbb,stroke:#333,stroke-width:2px;
+    class E,G,H compensationStep;

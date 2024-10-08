@@ -1,0 +1,65 @@
+classDiagram
+    class ITicket {
+        <<interface>>
+        +GetTicketInfo() string
+    }
+    class IPriceable {
+        <<interface>>
+        +CalculatePrice(string) decimal
+    }
+    class IReservable {
+        <<interface>>
+        +Reserve() bool
+    }
+    class DiscountCondition {
+        +Code string
+        +ApplyDiscount Func~decimal, decimal~
+    }
+    class Ticket {
+        <<abstract>>
+        +EventName string
+        +EventDate DateTime
+        +Seat string
+        #BasePrice decimal
+        -DiscountConditions List~DiscountCondition~
+        +GetTicketInfo() string
+        +Reserve() bool
+        +CalculatePrice(string)* decimal
+        #IsEarlyBird() bool
+        #ApplyEarlyBirdDiscount(decimal) decimal
+        #ApplyDiscountCode(decimal, string) decimal
+    }
+    class ConcertTicket {
+        +Artist string
+        +CalculatePrice(string) decimal
+        +GetTicketInfo() string
+    }
+    class SportsTicket {
+        +Team string
+        +CalculatePrice(string) decimal
+        +GetTicketInfo() string
+    }
+    class ITicketPrinter {
+        <<interface>>
+        +PrintTicket(ITicket) void
+    }
+    class TicketPrinter {
+        +PrintTicket(ITicket) void
+    }
+    class TicketManager {
+        -tickets List~ITicket~
+        -printer ITicketPrinter
+        +AddTicket(ITicket) void
+        +PrintAllTickets() void
+        +CalculateTotalRevenue(string) decimal
+    }
+
+    ITicket <|.. Ticket
+    IPriceable <|.. Ticket
+    IReservable <|.. Ticket
+    Ticket <|-- ConcertTicket
+    Ticket <|-- SportsTicket
+    Ticket o-- DiscountCondition
+    ITicketPrinter <|.. TicketPrinter
+    TicketManager o-- ITicketPrinter
+    TicketManager o-- ITicket

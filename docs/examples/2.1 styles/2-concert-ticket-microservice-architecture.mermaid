@@ -1,0 +1,59 @@
+graph TD
+    subgraph "Client Layer"
+        A1[Web Client]
+        A2[Mobile Client]
+        A3[Kiosk Client]
+    end
+
+    subgraph "API Gateway"
+        B[API Gateway / Load Balancer]
+    end
+
+    subgraph "Microservices"
+        C1[User Service]
+        C2[Event Service]
+        C3[Ticket Service]
+        C4[Payment Service]
+        C5[Notification Service]
+        C6[Analytics Service]
+    end
+
+    subgraph "Message Broker"
+        D[Message Queue]
+    end
+
+    subgraph "Databases"
+        E1[(User DB)]
+        E2[(Event DB)]
+        E3[(Ticket DB)]
+        E4[(Payment DB)]
+    end
+
+    subgraph "External Services"
+        F1[Email Service]
+        F2[SMS Service]
+        F3[Payment Gateway]
+    end
+
+    A1 --> B
+    A2 --> B
+    A3 --> B
+    B --> C1
+    B --> C2
+    B --> C3
+    B --> C4
+    B --> C5
+    B --> C6
+    C1 <--> D
+    C2 <--> D
+    C3 <--> D
+    C4 <--> D
+    C5 <--> D
+    C6 <--> D
+    C1 --> E1
+    C2 --> E2
+    C3 --> E3
+    C4 --> E4
+    C5 --> F1
+    C5 --> F2
+    C4 --> F3
