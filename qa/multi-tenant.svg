@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: bold; }
+    .subtitle { font-size: 18px; font-weight: bold; }
+    .normal-text { font-size: 14px; }
+    .italic-text { font-style: italic; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Monolithic Architecture for Multi-Tenant E-commerce</text>
+  
+  <!-- Dev Team -->
+  <circle cx="100" cy="150" r="40" fill="#4CAF50"/>
+  <text x="100" y="155" text-anchor="middle" fill="white" class="normal-text">5 Devs</text>
+  
+  <!-- Monolith Block -->
+  <rect x="200" y="50" width="550" height="600" fill="#E1F5FE" stroke="#0277BD" stroke-width="2"/>
+  <text x="475" y="80" text-anchor="middle" class="subtitle">Monolithic Modular N-Layer Architecture</text>
+  
+  <!-- Advantages -->
+  <text x="230" y="110" class="subtitle">Advantages:</text>
+  <text x="240" y="135" class="normal-text">• เริ่มพัฒนาได้ไว</text>
+  <text x="240" y="160" class="normal-text">• พัฒนาง่าย Deploy ง่าย</text>
+  <text x="240" y="185" class="normal-text">• Debug ง่าย</text>
+  <text x="240" y="210" class="normal-text">• ใช้ Resource คุ้ม</text>
+
+  
+  <!-- Implementation Tips -->
+  <text x="230" y="250" class="subtitle">Implementation Tips:</text>
+  <text x="240" y="280" class="normal-text">• ออกแบบเป็น modular แยก layer frontend, backend ให้แยกเครื่องกันได้</text>
+  <text x="240" y="300" class="normal-text">• เรียนรู้การออกแบบ database design for multi-tenancy</text>
+  <text x="240" y="320" class="normal-text">• ออกแบบวางแผนการใช้ Cache ช่วยตั้งแต่ Day 1 ถ้ามีแน้วโน้มขยาย tenant มาก </text>
+  <text x="240" y="340" class="normal-text">• ศึกษา Database Replication, Partition และ Sharding </text>
+  
+  <!-- Future Considerations -->
+  <text x="230" y="395" class="subtitle">Future Considerations:</text>
+  <text x="240" y="420" class="normal-text">• หลังเริ่มให้บริการแล้วค่อยๆประเมินการเติบโตของธุรกิจค่อยปรับขยาย</text>
+  <text x="240" y="445" class="normal-text">• ฐานข้อมูลสมัยนี้สามารถเสกลให้รองรับโหลดระดับข้อมูลพันล้านรายการต่อปีได้สบาย</text>
+  <text x="240" y="475" class="normal-text">โดยที่เรายังไม่ต้องใช้สถาปัตยกรรมที่ซับซ้อน แค่ Front, Back, DB ก็ยังได้ แต่ต้องวาง</text>
+  <text x="240" y="495" class="normal-text">Cache ให้เหมาะ และจูนฐานข้อมูลได้ลึก</text>
+  
+  <!-- Arrow -->
+  <line x1="140" y1="150" x2="190" y2="150" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+  
+  <!-- Explanation -->
+  <text x="400" y="550" text-anchor="middle" class="italic-text">
+    <tspan x="400" dy="0">Start with a monolith for a small team.</tspan>
+    <tspan x="400" dy="20">Easier to manage and faster to develop.</tspan>
+    <tspan x="400" dy="20">Can transition to microservices later if needed.</tspan>
+  </text>
+</svg>

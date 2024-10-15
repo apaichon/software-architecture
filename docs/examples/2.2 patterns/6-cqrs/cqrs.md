@@ -369,6 +369,7 @@ public class ConcertController : ControllerBase
     public async Task<ActionResult<ConcertDto>> GetConcert(Guid id)
     {
         var concert = await _mediator.Send(new GetConcertQuery { Id = id });
+       
         if (concert == null)
             return NotFound();
         return Ok(concert);

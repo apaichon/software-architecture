@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Trade-off Analysis Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; }
+        h1, h2 { color: #333; }
+        select, input { margin-bottom: 10px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        button { background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; }
+        .delete-row { background-color: #f44336; }
+    </style>
+</head>
+<body>
+    <h1>Flexible Trade-off Analysis Calculator</h1>
+
+    <h2>Architecture Styles</h2>
+    <select id="architectureStyles" multiple onchange="updateRatings()">
+        <option value="Monolithic">Monolithic</option>
+        <option value="N-Tier">N-Tier</option>
+        <option value="Microservices">Microservices</option>
+        <option value="Event-Driven">Event-Driven</option>
+        <option value="SOA">SOA</option>
+    </select>
+
+    <h2>Technologies</h2>
+    <select id="technologies" multiple>
+        <option value="Java">Java</option>
+        <option value=".NET">.NET</option>
+        <option value="Node.js">Node.js</option>
+        <option value="Python">Python</option>
+        <option value="Go">Go</option>
+    </select>
+
+    <h2>Skill Matrix</h2>
+    <table id="skillMatrix">
+        <tr>
+            <th>Skill</th>
+            <th>Average Proficiency (1-5)</th>
+            <th>Team Members Available</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <button onclick="addSkillRow()">Add Skill</button>
+
+    <h2>Ratings (Automatically Calculated)</h2>
+    <table id="ratingsTable">
+        <tr>
+            <th>Aspect</th>
+            <th>Weight (%)</th>
+            <th>Score (1-5)</th>
+        </tr>
+        <tr>
+            <td>Scalability</td>
+            <td><input type="number" min="0" max="100" value="20"></td>
+            <td id="scalabilityScore"></td>
+        </tr>
+        <tr>
+            <td>Performance</td>
+            <td><input type="number" min="0" max="100" value="20"></td>
+            <td id="performanceScore"></td>
+        </tr>
+        <tr>
+            <td>Security</td>
+            <td><input type="number" min="0" max="100" value="20"></td>
+            <td id="securityScore"></td>
+        </tr>
+        <tr>
+            <td>Maintainability</td>
+            <td><input type="number" min="0" max="100" value="20"></td>
+            <td id="maintainabilityScore"></td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td><input type="number" min="0" max="100" value="20"></td>
+            <td id="costScore"></td>
+        </tr>
+    </table>
+
+    <button onclick="calculateScore()">Calculate Final Score</button>
+
+    <h2>Results</h2>
+    <div id="results"></div>
+
+    <script>
+        const architectureRatings = {
+            "Monolithic": { scalability: 2, performance: 4, security: 3, maintainability: 2, cost: 4 },
+            "N-Tier": { scalability: 3, performance: 3, security: 3, maintainability: 3, cost: 3 },
+            "Microservices": { scalability: 5, performance: 3, security: 3, maintainability: 4, cost: 2 },
+            "Event-Driven": { scalability: 4, performance: 4, security: 3, maintainability: 3, cost: 2 },
+            "SOA": { scalability: 4, performance: 3, security: 4, maintainability: 4, cost: 2 }
+        };
+
+        function addSkillRow() {
+            const skillMatrix = document.getElementById('skillMatrix');
+            const newRow = skillMatrix.insertRow(-1);
+            
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = '<input type="text" placeholder="Skill">';
+            cell2.innerHTML = '<input type="number" min="1" max="5" step="0.1" onchange="updateRatings()">';
+            cell3.innerHTML = '<input type="number" min="0">';
+            cell4.innerHTML = '<button class="delete-row" onclick="deleteSkillRow(this)">Delete</button>';
+        }
+
+        function deleteSkillRow(btn) {
+            const row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            updateRatings();
+        }
+
+        function updateRatings() {
+            const selectedStyles = Array.from(document.getElementById('architectureStyles').selectedOptions).map(option => option.value);
+            const skillMatrix = document.getElementById('skillMatrix');
+            const skillProficiencies = {};
+
+            // Get skill proficiencies
+            for (let i = 1; i < skillMatrix.rows.length; i++) {
+                const skill = skillMatrix.rows[i].cells[0].querySelector('input').value;
+                const proficiency = parseFloat(skillMatrix.rows[i].cells[1].querySelector('input').value) || 0;
+                skillProficiencies[skill] = proficiency;
+            }
+
+            // Calculate ratings
+            const aspects = ['scalability', 'performance', 'security', 'maintainability', 'cost'];
+            const ratings = {};
+
+            aspects.forEach(aspect => {
+                let score = 0;
+                let count = 0;
+                selectedStyles.forEach(style => {
+                    if (architectureRatings[style]) {
+                        score += architectureRatings[style][aspect] * (skillProficiencies[style] || 1);
+                        count++;
+                    }
+                });
+                ratings[aspect] = count > 0 ? score / count : 0;
+                document.getElementById(`${aspect}Score`).textContent = ratings[aspect].toFixed(2);
+            });
+        }
+
+        function calculateScore() {
+            const selectedStyles = Array.from(document.getElementById('architectureStyles').selectedOptions).map(option => option.value);
+            const technologies = Array.from(document.getElementById('technologies').selectedOptions).map(option => option.value);
+
+            // Calculate skill matrix averages
+            const skillMatrix = document.getElementById('skillMatrix');
+            let totalProficiency = 0;
+            let totalAvailability = 0;
+            let skillCount = 0;
+
+            for (let i = 1; i < skillMatrix.rows.length; i++) {
+                const proficiency = parseFloat(skillMatrix.rows[i].cells[1].querySelector('input').value);
+                const availability = parseInt(skillMatrix.rows[i].cells[2].querySelector('input').value);
+                if (!isNaN(proficiency) && !isNaN(availability)) {
+                    totalProficiency += proficiency;
+                    totalAvailability += availability;
+                    skillCount++;
+                }
+            }
+
+            const avgProficiency = skillCount > 0 ? totalProficiency / skillCount : 0;
+            
+            // Calculate weighted scores
+            const ratingsTable = document.getElementById('ratingsTable');
+            let totalWeightedScore = 0;
+            let totalWeight = 0;
+
+            for (let i = 1; i < ratingsTable.rows.length; i++) {
+                const weight = parseFloat(ratingsTable.rows[i].cells[1].querySelector('input').value);
+                const score = parseFloat(ratingsTable.rows[i].cells[2].textContent);
+                if (!isNaN(weight) && !isNaN(score)) {
+                    totalWeightedScore += weight * score;
+                    totalWeight += weight;
+                }
+            }
+
+            const finalScore = totalWeight > 0 ? totalWeightedScore / totalWeight : 0;
+
+            // Display results
+            const results = document.getElementById('results');
+            results.innerHTML = `
+                <p><strong>Selected Architecture Styles:</strong> ${selectedStyles.join(', ')}</p>
+                <p><strong>Selected Technologies:</strong> ${technologies.join(', ')}</p>
+                <p><strong>Average Team Proficiency:</strong> ${avgProficiency.toFixed(2)}</p>
+                <p><strong>Total Team Availability:</strong> ${totalAvailability}</p>
+                <p><strong>Final Weighted Score:</strong> ${finalScore.toFixed(2)} / 5</p>
+            `;
+        }
+
+        // Add initial rows
+        addSkillRow();
+        addSkillRow();
+        addSkillRow();
+
+        // Initial update
+        updateRatings();
+    </script>
+</body>
+</html>

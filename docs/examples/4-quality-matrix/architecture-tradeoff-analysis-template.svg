@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: bold; }
+    .section-title { font-size: 18px; font-weight: bold; }
+    .content { font-size: 14px; }
+    .small { font-size: 12px; }
+    rect { fill: white; stroke: black; stroke-width: 2; }
+    .grid-line { stroke: #ddd; stroke-width: 1; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Architecture Trade-off Analysis Template</text>
+  
+  <!-- Architecture Styles -->
+  <text x="20" y="70" class="section-title">Architecture Styles</text>
+  <rect x="10" y="80" width="180" height="140"/>
+  <text x="20" y="100" class="content">□ Monolithic</text>
+  <text x="20" y="120" class="content">□ N-Tier</text>
+  <text x="20" y="140" class="content">□ Microservices</text>
+  <text x="20" y="160" class="content">□ Event-Driven</text>
+  <text x="20" y="180" class="content">□ SOA</text>
+  <text x="20" y="200" class="content">□ Other: __________</text>
+  
+  <!-- Technologies List -->
+  <text x="220" y="70" class="section-title">Technologies List</text>
+  <rect x="210" y="80" width="180" height="140"/>
+  <text x="220" y="100" class="content">□ Java</text>
+  <text x="220" y="120" class="content">□ .NET</text>
+  <text x="220" y="140" class="content">□ Node.js</text>
+  <text x="220" y="160" class="content">□ Python</text>
+  <text x="220" y="180" class="content">□ Go</text>
+  <text x="220" y="200" class="content">□ Other: __________</text>
+  
+  <!-- Skill Matrix -->
+  <text x="420" y="70" class="section-title">Skill Matrix</text>
+  <rect x="410" y="80" width="380" height="140"/>
+  <text x="420" y="100" class="content">Skill</text>
+  <text x="550" y="100" class="content">Proficiency (1-5)</text>
+  <text x="690" y="100" class="content">Availability</text>
+  <line x1="410" y1="110" x2="790" y2="110" class="grid-line" />
+  <text x="420" y="130" class="content">1. ____________</text>
+  <text x="570" y="130" class="content">___</text>
+  <text x="700" y="130" class="content">___</text>
+  <text x="420" y="160" class="content">2. ____________</text>
+  <text x="570" y="160" class="content">___</text>
+  <text x="700" y="160" class="content">___</text>
+  <text x="420" y="190" class="content">3. ____________</text>
+  <text x="570" y="190" class="content">___</text>
+  <text x="700" y="190" class="content">___</text>
+  
+  <!-- Rating Matrix -->
+  <text x="20" y="250" class="section-title">Rating Matrix (1-5 scale)</text>
+  <rect x="10" y="260" width="780" height="180"/>
+  <text x="20" y="280" class="content">Aspect</text>
+  <text x="150" y="280" class="content">Weight (%)</text>
+  <text x="250" y="280" class="content">Option 1</text>
+  <text x="350" y="280" class="content">Option 2</text>
+  <text x="450" y="280" class="content">Option 3</text>
+  <text x="550" y="280" class="content">Option 4</text>
+  <text x="650" y="280" class="content">Option 5</text>
+  <line x1="10" y1="290" x2="790" y2="290" class="grid-line" />
+  <text x="20" y="310" class="content">Scalability</text>
+  <text x="170" y="310" class="content">___</text>
+  <text x="270" y="310" class="content">___</text>
+  <text x="370" y="310" class="content">___</text>
+  <text x="470" y="310" class="content">___</text>
+  <text x="570" y="310" class="content">___</text>
+  <text x="670" y="310" class="content">___</text>
+  <text x="20" y="340" class="content">Performance</text>
+  <text x="170" y="340" class="content">___</text>
+  <text x="270" y="340" class="content">___</text>
+  <text x="370" y="340" class="content">___</text>
+  <text x="470" y="340" class="content">___</text>
+  <text x="570" y="340" class="content">___</text>
+  <text x="670" y="340" class="content">___</text>
+  <text x="20" y="370" class="content">Security</text>
+  <text x="170" y="370" class="content">___</text>
+  <text x="270" y="370" class="content">___</text>
+  <text x="370" y="370" class="content">___</text>
+  <text x="470" y="370" class="content">___</text>
+  <text x="570" y="370" class="content">___</text>
+  <text x="670" y="370" class="content">___</text>
+  <text x="20" y="400" class="content">Maintainability</text>
+  <text x="170" y="400" class="content">___</text>
+  <text x="270" y="400" class="content">___</text>
+  <text x="370" y="400" class="content">___</text>
+  <text x="470" y="400" class="content">___</text>
+  <text x="570" y="400" class="content">___</text>
+  <text x="670" y="400" class="content">___</text>
+  <text x="20" y="430" class="content">Cost</text>
+  <text x="170" y="430" class="content">___</text>
+  <text x="270" y="430" class="content">___</text>
+  <text x="370" y="430" class="content">___</text>
+  <text x="470" y="430" class="content">___</text>
+  <text x="570" y="430" class="content">___</text>
+  <text x="670" y="430" class="content">___</text>
+  
+  <!-- Decision and Rationale -->
+  <text x="20" y="470" class="section-title">Decision and Rationale</text>
+  <rect x="10" y="480" width="780" height="100"/>
+  <text x="20" y="500" class="content">Selected Architecture: ______________________________</text>
+  <text x="20" y="530" class="content">Rationale:</text>
+  <text x="20" y="560" class="small">_________________________________________________________</text>
+  <text x="20" y="580" class="small">_________________________________________________________</text>
+  
+</svg>
