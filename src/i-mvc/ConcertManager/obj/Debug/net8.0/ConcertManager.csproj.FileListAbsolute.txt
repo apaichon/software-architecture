@@ -1,0 +1,9 @@
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.csproj.AssemblyReference.cache
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.AssemblyInfoInputs.cache
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.AssemblyInfo.cs
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.csproj.CoreCompileInputs.cache
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.MvcApplicationPartsAssemblyInfo.cache
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.RazorAssemblyInfo.cache
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.RazorAssemblyInfo.cs
+/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/ConcertManager.sourcelink.json

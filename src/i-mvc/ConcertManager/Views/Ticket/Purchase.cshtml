@@ -1,0 +1,24 @@
+@model ConcertManager.Models.Ticket
+
+<h2>Purchase Ticket</h2>
+
+<form asp-action="Purchase">
+    <input type="hidden" asp-for="ConcertId" />
+    
+    <div class="form-group">
+        <label asp-for="CustomerName" class="control-label">Name</label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CustomerEmail" class="control-label">Email</label>
+        <input asp-for="CustomerEmail" class="form-control" type="email" />
+        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Purchase" class="btn btn-primary" />
+        <a asp-controller="Concert" asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form> 

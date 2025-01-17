@@ -1,0 +1,42 @@
+@model ConcertManager.Models.Concert
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>@Model.Name</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-3">Date</dt>
+                        <dd class="col-sm-9">@Model.Date.ToString("D")</dd>
+
+                        <dt class="col-sm-3">Venue</dt>
+                        <dd class="col-sm-9">@Model.Venue</dd>
+
+                        <dt class="col-sm-3">Price</dt>
+                        <dd class="col-sm-9">@Model.TicketPrice.ToString("C")</dd>
+
+                        <dt class="col-sm-3">Available Tickets</dt>
+                        <dd class="col-sm-9">@Model.AvailableTickets</dd>
+                    </dl>
+                </div>
+                <div class="col-md-4">
+                    @if (Model.AvailableTickets > 0)
+                    {
+                        <a asp-controller="Ticket" asp-action="Purchase" asp-route-concertId="@Model.Id" 
+                           class="btn btn-primary btn-lg">Purchase Tickets</a>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">Sold Out!</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div> 
