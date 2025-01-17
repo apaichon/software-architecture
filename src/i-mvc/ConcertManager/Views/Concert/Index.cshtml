@@ -1,0 +1,27 @@
+@model IEnumerable<ConcertManager.Models.Concert>
+
+<h2>Upcoming Concerts</h2>
+
+<div class="row">
+    @foreach (var concert in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@concert.Name</h5>
+                    <p class="card-text">
+                        <strong>Date:</strong> @concert.Date.ToString("D")<br>
+                        <strong>Venue:</strong> @concert.Venue<br>
+                        <strong>Price:</strong> @concert.TicketPrice.ToString("C")<br>
+                        <strong>Available Tickets:</strong> @concert.AvailableTickets
+                    </p>
+                    <a asp-controller="Ticket" asp-action="Purchase" asp-route-concertId="@concert.Id" 
+                       class="btn btn-primary @(concert.AvailableTickets <= 0 ? "disabled" : "")">
+                        Buy Tickets
+                    </a>
+                    <a asp-action="Details" asp-route-id="@concert.Id" class="btn btn-info">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div> 

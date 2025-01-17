@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Styles -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Blackboard (Central Component) -->
+    <rect x="300" y="250" width="200" height="160" fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+    <text x="400" y="280" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Blackboard</text>
+    <text x="320" y="310" font-family="Arial" font-size="12">• Inventory</text>
+    <text x="320" y="330" font-family="Arial" font-size="12">• Cart</text>
+    <text x="320" y="350" font-family="Arial" font-size="12">• Pricing</text>
+    <text x="320" y="370" font-family="Arial" font-size="12">• Order Status</text>
+    <text x="320" y="390" font-family="Arial" font-size="12">• Shipping Details</text>
+
+    <!-- Controller -->
+    <rect x="300" y="100" width="200" height="80" fill="#e1f5fe" stroke="#333" stroke-width="2"/>
+    <text x="400" y="145" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Controller</text>
+
+    <!-- Knowledge Sources (Experts) -->
+    <!-- Inventory Expert -->
+    <rect x="50" y="270" width="160" height="60" fill="#e8f5e9" stroke="#333" stroke-width="2"/>
+    <text x="130" y="305" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Inventory Expert</text>
+
+    <!-- Pricing Expert -->
+    <rect x="590" y="200" width="160" height="60" fill="#fff3e0" stroke="#333" stroke-width="2"/>
+    <text x="670" y="235" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Pricing Expert</text>
+
+    <!-- Shipping Expert -->
+    <rect x="590" y="340" width="160" height="60" fill="#f3e5f5" stroke="#333" stroke-width="2"/>
+    <text x="670" y="375" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Shipping Expert</text>
+
+    <!-- Arrows -->
+    <!-- Controller to Blackboard -->
+    <line x1="400" y1="180" x2="400" y2="250" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Experts to Blackboard -->
+    <line x1="210" y1="300" x2="300" y2="300" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="590" y1="230" x2="500" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="590" y1="370" x2="500" y2="370" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Labels -->
+    <text x="420" y="220" font-family="Arial" font-size="12">Orchestrates</text>
+    <text x="240" y="280" font-family="Arial" font-size="12">Updates</text>
+    <text x="540" y="240" font-family="Arial" font-size="12">Calculates</text>
+    <text x="530" y="350" font-family="Arial" font-size="12">Processes</text>
+</svg>

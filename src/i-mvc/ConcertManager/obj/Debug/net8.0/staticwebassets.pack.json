@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/obj/Debug/net8.0/scopedcss/projectbundle/ConcertManager.bundle.scp.css",
+      "PackagePath": "staticwebassets/ConcertManager.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ConcertManager.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ConcertManager.props",
+      "PackagePath": "build\\ConcertManager.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ConcertManager.props",
+      "PackagePath": "buildMultiTargeting\\ConcertManager.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ConcertManager.props",
+      "PackagePath": "buildTransitive\\ConcertManager.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

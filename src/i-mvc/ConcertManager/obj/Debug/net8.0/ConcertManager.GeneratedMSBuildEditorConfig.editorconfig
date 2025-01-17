@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ConcertManager
+build_property.RootNamespace = ConcertManager
+build_property.ProjectDir = /Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Concert/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uY2VydC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Concert/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uY2VydC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Ticket/Purchase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlja2V0L1B1cmNoYXNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xxnkokr9pz

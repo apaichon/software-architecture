@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.port": 5501,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "concert",
+            "database": "${workspaceFolder:software-architecture}/vi-cqrs/concert.db"
+        }
+    ]
+}

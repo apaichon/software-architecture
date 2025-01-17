@@ -43,121 +43,19 @@ Design a scalable and reliable payment gateway architecture that can handle a hi
 7. What kind of redundancy should be built into the system?
 8. How to manage and version the API for 1000 different partners?
 
+# Payment Gateway Architecture Design
 
-```d2
-Frontend.shape: package
+## Component Capacity Specifications
+- API Gateway: 1,000 TPS
+- Load Balancer: 1,200 TPS
+- Message Queue: 800 TPS
+- Cache Read: 5,000 TPS
+- Cache Write: 1,000 TPS
+- Database Read: 2,000 TPS
+- Database Write: 500 TPS
+- Core Process: 700 TPS
 
-Frontend: {
-  WebPortal: {
-    React
-  }
-  backoffice: Back Office Web {
-    Vue
-  }
-  mobile: Mobile {
-    android: Android
-    ios: IOS
-  }
-}
+## Traffic Load
+- Peak Traffic: 5,000 TPS
+- Average Traffic: 500 TPS
 
-Middleware: {
-  lb: Load Balance
-  apigw: Api Gateway
-  lb -> apigw
-}
-
-Backend: {
-  partner: Partner Api
-  payment: Payment Api
-  inquiry: Inquiry Api
-  tokenize: Tokennize Api
-  authen: Authentication Api
-  paymentproc: Payment Processing
-}
-
-Database: {
-  mq: Message Queue
-  mq.shape: queue
-  db: Payment DB
-  db.shape: cylinder
-  mem: Cache
-  mem.redis: Redis
-  mem.shape: circle
-}
-
-Frontend -> Middleware -> Backend -> Database
-
-Backend.payment -> Database.mq
-Backend.paymentproc -> Database.mq: Consume Payment Message to process
-Backend.paymentproc -> Database.db: Save payment transaction and status
-Backend.authen -> Database.db: Read user info
-Backend.authen -> Database.mem: R/W cache
-
-```
-
-```mermaid
-architecture-beta
-    group api(cloud)[API]
-
-    service db(database)[Database] in api
-    service disk1(disk)[Storage] in api
-    service disk2(disk)[Storage] in api
-    service server(server)[Server] in api
-
-    db:L -- R:server
-    disk1:T -- B:server
-    disk2:T -- B:db
-```
-
-```d2
-# Define the main components
-client: Client
-lb: Load Balancer {
-  label: "Load Balancer\n1,200 TPS"
-}
-api: API Gateway {
-  label: "API Gateway\n1,000 TPS"
-}
-mq: Message Queue {
-  label: "Message Queue\n800 TPS"
-}
-cache: Cache {
-  shape: cylinder
-  label: "Cache\nRead: 5,000 TPS\nWrite: 1,000 TPS"
-}
-db: Database {
-  shape: cylinder
-  label: "Database\nRead: 2,000 TPS\nWrite: 500 TPS"
-}
-core: Core Payment Process {
-  label: "Core Payment Process\n700 TPS"
-}
-
-# Define the connections
-client -> lb: HTTP/HTTPS
-lb -> api: HTTP/HTTPS
-api -> mq: Enqueue payment request
-api -> cache: Read/Write
-api -> db: Read/Write
-mq -> core: Dequeue payment request
-core -> cache: Read/Write
-core -> db: Read/Write
-
-# Add a legend for traffic load
-legend: {
-  title: Payment Gateway Traffic
-  avg: Average Load: 500 TPS
-  peak: Peak Load: 5,000 TPS
-}
-
-# Add notes
-notes: {
-  cache_note: Cache used for storing session data,\nuser preferences, and frequently accessed data
-  db_note: Database stores transaction history,\nuser accounts, and payment details
-  mq_note: Message Queue helps in\nhandling traffic spikes and\nasynchronous processing
-}
-
-notes.cache_note -> cache
-notes.db_note -> db
-notes.mq_note -> mq
-```

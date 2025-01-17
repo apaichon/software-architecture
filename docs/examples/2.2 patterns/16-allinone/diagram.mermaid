@@ -1,0 +1,131 @@
+flowchart TD
+    %% Client Layer
+    subgraph ClientLayer[Client Layer]
+        WebClient["Web Client"]
+        MobileClient["Mobile Client"]
+        ThickClient["Thick Client"]
+    end
+
+    %% Presentation Gateway Layer
+    subgraph PresentationGatewayLayer[Presentation Gateway Layer]
+        PresentationGateway["Presentation Gateway"]
+    end
+
+    %% Presentation Layer
+    subgraph PresentationLayer[Presentation Layer MVVM]
+        View --> ViewModel --> Model
+    end
+
+    %% Orchestration Layer
+    subgraph OrchestrationLayer[Orchestration Layer]
+        Orchestrator["Orchestrator"]
+    end
+
+    %% API Gateway Layer
+    subgraph APIGatewayLayer[API Gateway Layer]
+        APIGateway["API Gateway"]
+    end
+
+    %% Event Bus / Message Broker
+    EventBus["Event Bus / Message Broker"]
+
+    %% Spacebase Layer
+    subgraph Spacebase[Spacebase Architecture]
+        subgraph DataSpaces[Data Spaces]
+            TicketSpace["Ticket Space"]
+            PaymentSpace["Payment Space"]
+            EventSpace["Event Space"]
+            UserSpace["User Space"]
+        end
+        
+        subgraph SpaceMiddleware[Space Middleware]
+            MessageBus["Message Bus"]
+            DataGrid["Data Grid"]
+            ProcessingGrid["Processing Grid"]
+        end
+        
+        VirtualSpace["Virtual Space Coordinator"]
+    end
+
+    %% Microservices Layer
+    subgraph Microservices[Microservices]
+        TicketBooking["Ticket Booking Saga"]
+        PaymentService["Payment Service"]
+        TicketService["Ticket Service"]
+        EventService["Event Service"]
+        UserService["User Service"]
+    end
+
+    %% Query and Command Layer
+    subgraph QueryLayer[Query Side CQRS]
+        QueryAPI["Query API"]
+        QueryHandlers["Query Handlers"]
+        ReadModels["Read Models"]
+    end
+
+    subgraph CommandLayer[Command Side CQRS]
+        CommandAPI["Command API"]
+        CommandHandlers["Command Handlers"]
+        DomainModel["Domain Model"]
+    end
+
+    %% External Services
+    subgraph ExternalServices[External Services]
+        NotificationService["Notification Service"]
+        PaymentGateway["Payment Gateway"]
+    end
+
+    %% Repositories
+    subgraph Repositories[Repository Layer]
+        PaymentRepo["Payment Repository"]
+        TicketRepo["Ticket Repository"]
+        EventRepo["Event Repository"]
+        UserRepo["User Repository"]
+    end
+
+    %% Pipe and Filter Pattern
+    subgraph PipeFilter[Pipe and Filter]
+        InputFilter["Input Filter"]
+        ValidationFilter["Validation Filter"]
+        BusinessLogicFilter["Business Logic Filter"]
+        OutputFilter["Output Filter"]
+    end
+
+    %% Connections
+    ClientLayer --> PresentationGateway
+    PresentationGateway --> PresentationLayer
+    PresentationLayer --> APIGateway
+    APIGateway --> OrchestrationLayer
+    OrchestrationLayer --> EventBus
+    OrchestrationLayer --> Microservices
+    EventBus --> Microservices
+    Microservices --> Repositories
+    Microservices --> QueryLayer
+    Microservices --> CommandLayer
+    ExternalServices --> Microservices
+    PipeFilter --> Microservices
+
+    %% Spacebase Connections
+    Microservices --> VirtualSpace
+    VirtualSpace --> DataSpaces
+    DataSpaces --> SpaceMiddleware
+    SpaceMiddleware --> Repositories
+    VirtualSpace --> MessageBus
+    MessageBus --> DataGrid
+    DataGrid --> ProcessingGrid
+
+    %% Style definitions
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef gateway fill:#e1f5fe,stroke:#0288d1
+    classDef service fill:#e8f5e9,stroke:#2e7d32
+    classDef repository fill:#fff3e0,stroke:#ef6c00
+    classDef filter fill:#f3e5f5,stroke:#7b1fa2
+    classDef space fill:#e8eaf6,stroke:#3f51b5
+    classDef middleware fill:#fff8e1,stroke:#ffa000
+
+    class APIGateway,PresentationGateway gateway
+    class TicketBooking,PaymentService,TicketService,EventService,UserService service
+    class PaymentRepo,TicketRepo,EventRepo,UserRepo repository
+    class InputFilter,ValidationFilter,BusinessLogicFilter,OutputFilter filter
+    class TicketSpace,PaymentSpace,EventSpace,UserSpace,VirtualSpace space
+    class MessageBus,DataGrid,ProcessingGrid middleware
