@@ -1,0 +1,53 @@
+graph TD
+    subgraph Publisher["Publisher (Observable)"]
+        Source["Data Source"]
+        Source --> E1["emit()"]
+    end
+
+    subgraph Operators["Operators (Data Processing)"]
+        Map["map()"]
+        Filter["filter()"]
+        Transform["transform()"]
+    end
+
+    subgraph Subscriber["Subscriber (Observer)"]
+        Next["onNext()"]
+        Error["onError()"]
+        Complete["onComplete()"]
+    end
+
+    subgraph BackPressure["Backpressure Handling"]
+        Buffer["Buffer"]
+        Drop["Drop"]
+        Latest["Latest"]
+    end
+
+    E1 --> Map
+    Map --> Filter
+    Filter --> Transform
+    Transform --> BackPressure
+    
+    Buffer --> Next
+    Drop --> Next
+    Latest --> Next
+    
+    Transform --> Error
+    Transform --> Complete
+
+    style Publisher fill:#e1f5fe,stroke:#01579b
+    style Operators fill:#e8f5e9,stroke:#1b5e20
+    style Subscriber fill:#fff3e0,stroke:#e65100
+    style BackPressure fill:#f3e5f5,stroke:#4a148c
+
+    %% Event examples
+    Click["Click Events"]
+    Network["Network Data"]
+    Sensor["Sensor Data"]
+    
+    Click --> Source
+    Network --> Source
+    Sensor --> Source
+
+    %% Error handling
+    Error --> ErrorHandler["Error Recovery"]
+    ErrorHandler --> Transform

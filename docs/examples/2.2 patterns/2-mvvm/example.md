@@ -233,6 +233,7 @@ export default {
 </script>
 
 // src/components/ConcertDetails.vue
+
 <template>
   <div v-if="selectedConcert">
     <h2>{{ selectedConcert.name }}</h2>
@@ -291,4 +292,40 @@ export default {
 };
 </script>
 
+```
+
+```mermaid
+graph TD
+    A[User] -->|Selects Concert| B[ConcertDetails Component]
+    B -->|Fetches Concert Details| C[Vuex Store]
+    C -->|API Call| D[API Service]
+    D -->|GET /concerts/:id| E[Backend API]
+    C -->|Commits Concert Data| F[Vuex State]
+    F -->|Updates selectedConcert| G[ConcertDetails Component]
+    G -->|Displays Concert Details| H[User Interface]
+```
+
+```js
+this.fetchConcert(this.$route.params.id); ->
+actions: {
+  
+    async fetchConcert({ commit }, id) {
+      const concert = await api.getConcert(id);
+      commit('SET_SELECTED_CONCERT', concert);
+    },
+}
+-> commit('SET_SELECTED_CONCERT', concert);
+-> state.selectedConcert = concert;
+-> selectedConcert = concert;
+->
+<template>
+  <div v-if="selectedConcert">
+    <h2>{{ selectedConcert.name }}</h2>
+    <p>Date: {{ selectedConcert.date }}</p>
+    <p>Venue: {{ selectedConcert.venue }}</p>
+    <p>Available Tickets: {{ selectedConcert.availableTickets }}</p>
+    <p>Price: ${{ selectedConcert.ticketPrice }}</p>
+    <button @click="showPurchaseForm = true">Purchase Ticket</button>
+  </div>
+</template>
 ```

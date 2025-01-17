@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Score Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #averageScores {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Strategy Score Calculator</h1>
+        <table id="strategyTable">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Strategy</th>
+                    <th>Layer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Strategies will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <button onclick="calculateAverages()">Calculate Averages</button>
+        <div id="averageScores"></div>
+    </div>
+
+    <script>
+        const strategies = [
+            { name: 'Content Delivery Networks', layer: 'Frontend', scalability: 5, performance: 5, security: 3, maintainability: 4, cost: 3 },
+            { name: 'Lazy Loading', layer: 'Frontend', scalability: 4, performance: 4, security: 2, maintainability: 4, cost: 2 },
+            { name: 'Load Balancing', layer: 'Backend', scalability: 5, performance: 4, security: 3, maintainability: 4, cost: 4 },
+            { name: 'Caching', layer: 'Backend', scalability: 5, performance: 5, security: 2, maintainability: 4, cost: 3 },
+            { name: 'Authentication', layer: 'Backend', scalability: 3, performance: 3, security: 5, maintainability: 3, cost: 3 },
+            { name: 'Database Sharding', layer: 'Database', scalability: 5, performance: 4, security: 3, maintainability: 2, cost: 4 },
+            { name: 'Encryption at Rest', layer: 'Database', scalability: 2, performance: 3, security: 5, maintainability: 4, cost: 3 },
+            { name: 'Indexing', layer: 'Database', scalability: 4, performance: 5, security: 2, maintainability: 4, cost: 2 },
+        ];
+
+        function populateTable() {
+            const tableBody = document.querySelector('#strategyTable tbody');
+            strategies.forEach((strategy, index) => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td><input type="checkbox" id="strategy${index}" /></td>
+                    <td>${strategy.name}</td>
+                    <td>${strategy.layer}</td>
+                `;
+            });
+        }
+
+        function calculateAverages() {
+            const selectedStrategies = strategies.filter((_, index) => 
+                document.getElementById(`strategy${index}`).checked
+            );
+
+            if (selectedStrategies.length === 0) {
+                document.getElementById('averageScores').innerHTML = '<p>Please select at least one strategy.</p>';
+                return;
+            }
+
+            const sums = selectedStrategies.reduce((acc, strategy) => ({
+                scalability: acc.scalability + strategy.scalability,
+                performance: acc.performance + strategy.performance,
+                security: acc.security + strategy.security,
+                maintainability: acc.maintainability + strategy.maintainability,
+                cost: acc.cost + strategy.cost,
+            }), { scalability: 0, performance: 0, security: 0, maintainability: 0, cost: 0 });
+
+            const averages = Object.keys(sums).reduce((acc, key) => ({
+                ...acc,
+                [key]: (sums[key] / selectedStrategies.length).toFixed(2)
+            }), {});
+
+            document.getElementById('averageScores').innerHTML = `
+                <h3>Average Scores:</h3>
+                <ul>
+                    <li>Scalability: ${averages.scalability}</li>
+                    <li>Performance: ${averages.performance}</li>
+                    <li>Security: ${averages.security}</li>
+                    <li>Maintainability: ${averages.maintainability}</li>
+                    <li>Cost: ${averages.cost}</li>
+                </ul>
+            `;
+        }
+
+        // Populate the table when the page loads
+        window.onload = populateTable;
+    </script>
+</body>
+</html>

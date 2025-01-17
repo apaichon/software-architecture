@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Resource and Price Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+        }
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Architecture Resource and Price Calculator</h1>
+        
+        <h2>Architecture Style</h2>
+        <select id="architectureStyle">
+            <option value="monolithic">Monolithic</option>
+            <option value="microservices">Microservices</option>
+            <option value="serverless">Serverless</option>
+        </select>
+
+        <h2>Scalability Strategies</h2>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="scalability" value="vertical"> Vertical Scaling</label>
+            <label><input type="checkbox" name="scalability" value="horizontal"> Horizontal Scaling</label>
+            <label><input type="checkbox" name="scalability" value="auto"> Auto-scaling</label>
+        </div>
+
+        <h2>Performance Strategies</h2>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="performance" value="caching"> Caching</label>
+            <label><input type="checkbox" name="performance" value="cdn"> Content Delivery Network (CDN)</label>
+            <label><input type="checkbox" name="performance" value="optimization"> Code Optimization</label>
+        </div>
+
+        <h2>Security Strategies</h2>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="security" value="encryption"> End-to-End Encryption</label>
+            <label><input type="checkbox" name="security" value="firewall"> Advanced Firewall</label>
+            <label><input type="checkbox" name="security" value="authentication"> Multi-Factor Authentication</label>
+        </div>
+
+        <h2>Estimated Number of Users</h2>
+        <input type="number" id="userCount" placeholder="Enter estimated number of users">
+
+        <button onclick="calculateResources()">Calculate Resources and Price</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function getSelectedCheckboxValues(name) {
+            return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+        }
+
+        function calculateResources() {
+            const architectureStyle = document.getElementById('architectureStyle').value;
+            const scalabilityStrategies = getSelectedCheckboxValues('scalability');
+            const performanceStrategies = getSelectedCheckboxValues('performance');
+            const securityStrategies = getSelectedCheckboxValues('security');
+            const userCount = parseInt(document.getElementById('userCount').value);
+
+            let basePrice = 0;
+            let servers = 0;
+            let storage = 0;
+            let bandwidth = 0;
+
+            // Base calculations
+            if (architectureStyle === 'monolithic') {
+                basePrice = 1000;
+                servers = Math.ceil(userCount / 10000);
+                storage = userCount * 0.1; // GB
+                bandwidth = userCount * 0.05; // GB/month
+            } else if (architectureStyle === 'microservices') {
+                basePrice = 2000;
+                servers = Math.ceil(userCount / 5000);
+                storage = userCount * 0.2;
+                bandwidth = userCount * 0.1;
+            } else if (architectureStyle === 'serverless') {
+                basePrice = 1500;
+                servers = 0; // Serverless doesn't use traditional servers
+                storage = userCount * 0.15;
+                bandwidth = userCount * 0.08;
+            }
+
+            // Adjust for scalability strategies
+            if (scalabilityStrategies.includes('horizontal')) {
+                servers *= 1.5;
+                basePrice *= 1.2;
+            }
+            if (scalabilityStrategies.includes('auto')) {
+                servers *= 1.2;
+                basePrice *= 1.3;
+            }
+            if (scalabilityStrategies.includes('vertical')) {
+                basePrice *= 1.1;
+            }
+
+            // Adjust for performance strategies
+            if (performanceStrategies.includes('cdn')) {
+                bandwidth *= 1.5;
+                basePrice += 500;
+            }
+            if (performanceStrategies.includes('optimization')) {
+                basePrice += 1000;
+            }
+            if (performanceStrategies.includes('caching')) {
+                bandwidth *= 0.8;
+                basePrice += 300;
+            }
+
+            // Adjust for security strategies
+            if (securityStrategies.includes('encryption')) {
+                basePrice += 800;
+            }
+            if (securityStrategies.includes('firewall')) {
+                basePrice += 1000;
+            }
+            if (securityStrategies.includes('authentication')) {
+                basePrice += 600;
+            }
+
+            // Calculate total price
+            const serverCost = servers * 100; // $100 per server
+            const storageCost = storage * 0.1; // $0.1 per GB
+            const bandwidthCost = bandwidth * 0.15; // $0.15 per GB
+            const totalPrice = basePrice + serverCost + storageCost + bandwidthCost;
+
+            // Display result
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Estimated Resources and Price:</h3>
+                <p>Servers: ${servers}</p>
+                <p>Storage: ${storage.toFixed(2)} GB</p>
+                <p>Bandwidth: ${bandwidth.toFixed(2)} GB/month</p>
+                <p>Estimated Monthly Cost: $${totalPrice.toFixed(2)}</p>
+                <p>Selected Strategies:</p>
+                <ul>
+                    <li>Scalability: ${scalabilityStrategies.join(', ') || 'None'}</li>
+                    <li>Performance: ${performanceStrategies.join(', ') || 'None'}</li>
+                    <li>Security: ${securityStrategies.join(', ') || 'None'}</li>
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>

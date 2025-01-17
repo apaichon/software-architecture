@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Architecture Styles Rating Radar Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+</head>
+<body>
+    <div id="chart" style="width: 100%; height: 600px;"></div>
+    <script>
+        var dom = document.getElementById('chart');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+            useDirtyRect: false
+        });
+        var app = {};
+
+        var option;
+
+        option = {
+            title: {
+                text: 'Architecture Styles Rating'
+            },
+            tooltip: {},
+            legend: {
+                data: ['Monolithic', 'Layered', 'Client-Server', 'Microservices', 'Event-Driven', 'SOA'],
+                bottom: 10,  // Position the legend at the bottom
+                itemGap: 20  // Increase space between legend items for better readability
+            },
+            radar: {
+                indicator: [
+                    { name: 'Scalability', max: 5 },
+                    { name: 'Performance', max: 5 },
+                    { name: 'Security', max: 5 },
+                    { name: 'Maintainability', max: 5 },
+                    { name: 'Cost Efficiency', max: 5 }
+                ],
+                center: ['50%', '50%'],  // Center the radar chart
+                radius: '60%'  // Adjust the size of the radar chart
+            },
+            series: [{
+                name: 'Architecture Styles',
+                type: 'radar',
+                data: [
+                    {
+                        value: [2, 3, 3, 2, 4],
+                        name: 'Monolithic'
+                    },
+                    {
+                        value: [3, 3, 4, 3, 3],
+                        name: 'Layered'
+                    },
+                    {
+                        value: [3, 4, 3, 3, 3],
+                        name: 'Client-Server'
+                    },
+                    {
+                        value: [5, 4, 4, 4, 2],
+                        name: 'Microservices'
+                    },
+                    {
+                        value: [5, 5, 3, 3, 2],
+                        name: 'Event-Driven'
+                    },
+                    {
+                        value: [4, 3, 4, 4, 2],
+                        name: 'SOA'
+                    }
+                ]
+            }]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+    </script>
+</body>
+</html>
