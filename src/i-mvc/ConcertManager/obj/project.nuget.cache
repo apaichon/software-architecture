@@ -1,21 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "tDTq2uAZDk/1bW9HHmogSKVgdyBfNBVQ05wCu+52oK0ODSU4C5knJN8jn2qDlQOZrN/MN7+aJ2Fp6kvANXzgRw==",
+  "dgSpecHash": "JHe17k+zw2kw25CJW4YD/O//9OMGcC4lz2vBmFkLfXzSQISUc5X7YPi1xyloE/J1BJQM+8CvXoJtaizG/VOJRw==",
   "success": true,
-  "projectFilePath": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
+  "projectFilePath": "/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
   "expectedPackageFiles": [
-    "/Users/a677018/.nuget/packages/microsoft.entityframeworkcore/7.0.0/microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.0/microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.0/microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.0/microsoft.entityframeworkcore.inmemory.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
-    "/Users/a677018/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+    "/Users/apaichon/.nuget/packages/microsoft.entityframeworkcore/7.0.0/microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.0/microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.0/microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.0/microsoft.entityframeworkcore.inmemory.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "/Users/apaichon/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

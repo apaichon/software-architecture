@@ -196,7 +196,7 @@ func main() {
 	kernel.Use(CORSMiddleware)
 	kernel.Use(AuthenticationMiddleware)
 	kernel.Use(AuthorizationMiddleware)
-	kernel.Use(RateLimitMiddleware(10))
+	kernel.Use(RateLimitMiddleware(1))
 	kernel.Use(CircuitBreakerMiddleware(5, 30*time.Second))
 
 	fmt.Println("Server is running on port 4010")

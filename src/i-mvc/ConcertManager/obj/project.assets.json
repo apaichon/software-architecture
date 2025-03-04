@@ -548,24 +548,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/a677018/.nuget/packages/": {}
+    "/Users/apaichon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
+      "projectUniqueName": "/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
       "projectName": "ConcertManager",
-      "projectPath": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
-      "packagesPath": "/Users/a677018/.nuget/packages/",
-      "outputPath": "/Users/a677018/Projects/courses/sa/software-architecture/src/i-mvc/ConcertManager/obj/",
+      "projectPath": "/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/ConcertManager.csproj",
+      "packagesPath": "/Users/apaichon/.nuget/packages/",
+      "outputPath": "/Users/apaichon/Projects/Courses/software-architecture/git/software-architecture/src/i-mvc/ConcertManager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/a677018/.nuget/NuGet/NuGet.Config"
+        "/Users/apaichon/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "/Users/apaichon/Projects/MrFox/src/mrfox.core.package": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -578,6 +580,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -608,7 +615,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
